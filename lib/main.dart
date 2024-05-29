@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:open_weather_app/model/splash_view.dart';
+import 'package:open_weather_app/utils/routes.dart';
 import 'package:open_weather_app/views/open_weather_view.dart';
 
 void main(){
@@ -11,11 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       theme: ThemeData.dark(
-
       ),
       debugShowCheckedModeBanner: false,
-      home: OpenWeatherView(),
-    );
+      initialRoute: AppRoutes.splashView,
+      routes: AppRoutes.appRoutes(context));
   }
 }
 //////////////////////////
