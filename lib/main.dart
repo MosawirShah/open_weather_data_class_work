@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:open_weather_app/model/splash_view.dart';
+import 'package:open_weather_app/views/splash_view.dart';
 import 'package:open_weather_app/utils/routes.dart';
 import 'package:open_weather_app/views/open_weather_view.dart';
 

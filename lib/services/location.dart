@@ -1,43 +1,7 @@
-import 'package:flutter/material.dart';
+
 import 'package:geolocator/geolocator.dart';
-import 'package:open_weather_app/model/Weather_model.dart';
-import 'package:open_weather_app/utils/routes.dart';
-import 'package:open_weather_app/views/open_weather_view.dart';
 
-import '../services/network_data.dart';
-
-class SplashView extends StatefulWidget {
-  const SplashView({Key? key}) : super(key: key);
-
-  @override
-  State<SplashView> createState() => _SplashViewState();
-}
-
-class _SplashViewState extends State<SplashView> {
-  var lat;
-  var lng;
-  var description;
-  Network network = Network();
-  WeatherModel? weatherModel;
-  @override
-  initState() {
-    super.initState();
-    getData();
-    Future.delayed(const Duration(seconds: 3),(){
-     Navigator.of(context).pushNamed(AppRoutes.openWeatherView, arguments: DescriptionArguments(desription: description));
-    });
-  }
-
-  getData() async {
-    Position position = await getCurrentLocation();
-    await network.getCurrentWeatherData();
-    description = network.weatherModel!.description;
-    lat = position.latitude;
-    lng = position.longitude;
-
-    print("Latitude $lat and Longitude is $lng");
-    // print(position);
-  }
+class Location{
 
   //GET CURRENT LOCATION
   Future<Position> getCurrentLocation() async {
@@ -76,20 +40,5 @@ class _SplashViewState extends State<SplashView> {
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
-  }
-
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("LOADING ..."),
-      ),
-    );
   }
 }
